@@ -9,7 +9,7 @@ export function Check({onPressHandler}) {
                 name="check"
                 type="feather"
                 size={15}
-                color="red"
+                color="green"
                 reverse
                 raised
             />
@@ -24,7 +24,7 @@ export function Cross({onPressHandler}) {
                 name="x"
                 type="feather"
                 size={15}
-                color="green"
+                color="red"
                 reverse
                 raised
             />

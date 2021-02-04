@@ -12,9 +12,9 @@ const data = [
     { id:4, name:'abcd efg', time:'04:30 PM', presentAt: 'Nehru road, Dombivli East, Maharashtra', avatarTitle:'AE' },
     { id:5, name:'abcd efg', time:'04:30 PM', presentAt: 'Nehru road, Dombivli East, Maharashtra', avatarTitle:'AE' },
     { id:6, name:'abcd efg', time:'04:30 PM', presentAt: 'Nehru road, Dombivli East, Maharashtra', avatarTitle:'AE' },
-    // { id:7, name:'abcd efg', time:'04:30 PM', presentAt: 'Nehru road, Dombivli East, Maharashtra', avatarTitle:'AE' },
-    // { id:8, name:'abcd efg', time:'04:30 PM', presentAt: 'Nehru road, Dombivli East, Maharashtra', avatarTitle:'AE' },
-    // { id:9, name:'abcd efg', time:'04:30 PM', presentAt: 'Nehru road, Dombivli East, Maharashtra', avatarTitle:'AE' },
+    { id:7, name:'abcd efg', time:'04:30 PM', presentAt: 'Nehru road, Dombivli East, Maharashtra', avatarTitle:'AE' },
+    { id:8, name:'abcd efg', time:'04:30 PM', presentAt: 'Nehru road, Dombivli East, Maharashtra', avatarTitle:'AE' },
+    { id:9, name:'abcd efg', time:'04:30 PM', presentAt: 'Nehru road, Dombivli East, Maharashtra', avatarTitle:'AE' },
     // { id:10, name:'abcd efg', time:'04:30 PM', presentAt: 'Nehru road, Dombivli East, Maharashtra', avatarTitle:'AE' },
     // { id:11, name:'abcd efg', time:'04:30 PM', presentAt: 'Nehru road, Dombivli East, Maharashtra', avatarTitle:'AE' },
     // { id:12, name:'abcd efg', time:'04:30 PM', presentAt: 'Nehru road, Dombivli East, Maharashtra', avatarTitle:'AE' },
@@ -25,7 +25,7 @@ const data = [
 
 function TodaysAttendanceListItem({item, onPressListitem}){
     return (
-        <ListItem bottomDivider onPress={()=>onPressListitem()}>
+        <ListItem bottomDivider onLongPress={()=>onPressListitem()}>
             <CustomerAvatar title={item.avatarTitle} size="small"/>
             <ListItem.Content>
                 <ListItem.Title>{item.name}</ListItem.Title>
@@ -34,6 +34,17 @@ function TodaysAttendanceListItem({item, onPressListitem}){
                 <Batch type="present" />
             </ListItem.Content>
             <ListItem.Chevron size={26} />
+        </ListItem>
+    );
+}
+
+function RemainingUsersListItem({item}){
+    return (
+        <ListItem bottomDivider>
+            <CustomerAvatar title={item.avatarTitle} size="small"/>
+            <ListItem.Content>
+                <ListItem.Title>{item.name}</ListItem.Title>
+            </ListItem.Content>
         </ListItem>
     );
 }
@@ -62,6 +73,17 @@ export default function AdminHomeScreen({navigation}){
                     />
                     </View>
                 </Card>
+                <Card containerStyle={styles.bottomListContent}>
+                    <Card.Title>Remaining Users</Card.Title>
+                    <Card.Divider/>
+                    <View style={{marginBottom:100}} >
+                    <FlatList
+                        data={data}
+                        keyExtractor={item=>item.id.toString()}
+                        renderItem={RemainingUsersListItem}
+                    />
+                    </View>
+                </Card>
             </View>
         </SafeAreaView>
     );
@@ -77,9 +99,14 @@ const styles = StyleSheet.create({
     },
     topListContent:{
         // borderWidth:1,
-        flex:1,
+        flex:0.7,
         margin:0,
         // marginVertical:20,
         // marginHorizontal:30,
+    },
+    bottomListContent:{
+        flex:0.3,
+        margin:0,
+        marginTop:10,
     },
 });

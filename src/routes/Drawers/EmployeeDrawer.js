@@ -12,6 +12,7 @@
 //     );
 // }
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
 import EmployeeHomeScreen from '../../components/Screens/EmployeeHomeScreen';
@@ -24,7 +25,12 @@ const Screens = {
 };
 
 const employeeDrawerNavigator = createDrawerNavigator(Screens,{
-    hideStatusBar:true,
+    // hideStatusBar:true,
+    style:{
+        marginTop: StatusBar.currentHeight,
+        zIndex:5,
+        // backgroundColor:'red',
+    },
 });
 export default createAppContainer(employeeDrawerNavigator)
 ;

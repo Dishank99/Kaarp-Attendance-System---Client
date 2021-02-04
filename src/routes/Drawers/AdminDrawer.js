@@ -14,6 +14,7 @@
 //     );
 // }
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
 import AdminStack from '../Stacks/AdminStack';
@@ -29,7 +30,12 @@ const Screens = {
 };
 
 const adminDrawerNavigator = createDrawerNavigator(Screens,{
-    hideStatusBar:true,
+    // hideStatusBar:true,
+    style:{
+        marginTop: StatusBar.currentHeight,
+        zIndex:5,
+        // backgroundColor:'red',
+    },
 });
 export default createAppContainer(adminDrawerNavigator)
 ;

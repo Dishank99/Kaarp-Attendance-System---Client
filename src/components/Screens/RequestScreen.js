@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, FlatList, View } from 'react-native';
+import { SafeAreaView, StyleSheet, FlatList, View, StatusBar } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import CustomHeader from '../Layouts/CustomHeader';
 import CustomAvatar from '../Others/CustomAvatar';
@@ -59,6 +59,8 @@ export default function RequestScreen({navigation}) {
 const styles = StyleSheet.create({
     container:{
         flex:1,
+        marginTop: StatusBar.currentHeight, // because this screen is directly used in drawer
+        // when in stack a padding of statusbar height is added
     },
     content:{
         flex:1,
